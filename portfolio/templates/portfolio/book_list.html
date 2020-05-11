@@ -1,0 +1,57 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+
+<h2> books</h2>
+
+<p>
+
+    <a href="{% url 'upload_book' %}" class="btn btn-primary"> upload again </a>
+</p>
+<table class="table table-striped table-responsive-md btn-table">
+
+    <thead>
+
+    <tr>
+        <th>#</th>
+        <th> cover</th>
+        <th>title</th>
+        <th> author</th>
+        <th> download</th>
+        <th> delete </th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for book in books %}
+    <td>
+      <td>
+
+        {% if book.cover %}
+        <img src="{{ book.cover.url }}" alt="{{ book.title }}" style ="width:100px;">
+        {% else %}
+        <span class="text-muted">
+            no image
+        </span>
+        {% endif %}
+    </td>
+        <td> {{ book.title  }}</td>
+        <td> {{ book.author }} </td>
+    <td><a href="{{ book.pdf.url }}" class="btn btn-primary btn-sm" target="_blank">download </a></td>
+    <td>
+        <form method="post" action="{% url 'delete_book' book.pk %}">{% csrf_token %}
+        <button type="submit" class="btn btn-danger btn-sm">delete</button>
+        </form>
+    </td>
+
+
+
+    </tr>
+    {% endfor  %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}
