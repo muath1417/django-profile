@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'o%t&@-tobsh^@e&+u5-r*@6=h2#grv(my4k4-pnu*l+fvcu@h@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['muathoudah.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -128,8 +128,3 @@ MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 
 
 
-
-try:
-    from .local_settings import *
-except INSTALLED_APPS:
-    print("looks there is no file")
